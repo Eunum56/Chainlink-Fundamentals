@@ -19,6 +19,22 @@ This project implements a dynamic ERC20 token minting system for a gaming ecosys
 
 ---
 
+## ✅ Test Coverage
+
+Below is the **Foundry test coverage report** for the project. It shows that **GameEngine** and **GameToken** contracts have achieved 100% coverage across all metrics:
+
+| Contract                                     | Statements | Branches | Functions | Lines |
+|----------------------------------------------|------------|----------|-----------|-------|
+| src/Data Feeds/Price Feeds/GameEngine.sol    | 100% (37/37) | 100% (43/43) | 100% (9/9) | 100% (9/9) |
+| src/Data Feeds/Price Feeds/GameToken.sol     | 100% (9/9) | 100% (7/7) | 100% (2/2) | 100% (4/4) |
+
+**unit tests** and **integration tests** to ensure robust security.
+
+
+
+
+---
+
 ## 🔗 Deployment
 
 - **Network**: Ethereum Sepolia
