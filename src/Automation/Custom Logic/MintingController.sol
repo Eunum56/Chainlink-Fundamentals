@@ -2,7 +2,8 @@
 pragma solidity ^0.8.26;
 
 import {AutoToken} from "./AutoToken.sol";
-// import {AutomationCompatibleInterface} from "@chainlink/contracts/src/v0.8/automation/interfaces/AutomationCompatibleInterface.sol";
+import {AutomationCompatibleInterface} from
+    "@chainlink/contracts/src/v0.8/automation/interfaces/AutomationCompatibleInterface.sol";
 
 // Layout of Contract:
 // version
@@ -31,7 +32,7 @@ import {AutoToken} from "./AutoToken.sol";
  * @notice Automates periodic minting using Chainlink Automation (Custom Logic)
  * @dev Mints 10 (18 decimals) tokens every 5 hours to the owner address
  */
-contract MintingController {
+contract MintingController is AutomationCompatibleInterface {
     // ERRORS
     error MintingController__UpKeepNotNeeded();
     error MintingController__InvalidTokenAddress();
@@ -63,16 +64,17 @@ contract MintingController {
     /**
      * @notice Checks if upKeep needed based on the interval
      * @param - ignored
-     * @return upKeepNeeded True if upKeep is needed
+     * @return upkeepNeeded True if upKeep is needed
      * @return - ignored
      */
-    function checkUpKeep(bytes calldata /* checkData */ )
+    function checkUpkeep(bytes calldata /* checkData */ )
         external
         view
-        returns (bool upKeepNeeded, bytes memory /* performData */ )
+        override
+        returns (bool upkeepNeeded, bytes memory /* performData */ )
     {
-        upKeepNeeded = (block.timestamp - s_lastTimeStamp) > s_interval;
-        return (upKeepNeeded, "");
+        upkeepNeeded = (block.timestamp - s_lastTimeStamp) > s_interval;
+        return (upkeepNeeded, "");
     }
 
     /**
@@ -80,7 +82,7 @@ contract MintingController {
      * @param - ignored
      * @dev Mints 10 tokens to the owner address
      */
-    function performUpKeep(bytes memory /* performData */ ) external {
+    function performUpkeep(bytes calldata /* performData */ ) external override {
         if ((block.timestamp - s_lastTimeStamp) > s_interval) {
             s_lastTimeStamp = block.timestamp;
             s_autoToken.mint(s_autoToken.owner(), 10 * 1e18);
