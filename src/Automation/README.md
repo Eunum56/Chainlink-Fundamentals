@@ -5,6 +5,8 @@ This repository showcases multiple Chainlink Automation projects demonstrating d
 ---
 
 ## 🗂️ Folder Structure
+
+```
 Automation/
 ├── Custom Logic/
 │   ├── AutoToken.sol
@@ -15,7 +17,7 @@ Automation/
 │   └── TransferAutomation.sol
 └── Time-based/
     └── SimpleCounter.sol
-
+```
 
 ---
 
