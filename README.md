@@ -52,31 +52,46 @@ chainlink-fundamentals/
 
 ### 1️⃣ Data Feeds
 
-**Description:**
+**Description:**  
 Chainlink Data Feeds bring reliable, tamper-proof real-world data (like asset prices) on-chain.
 
-**Example Project:**
-- **GameToken (Price Feeds)**
-  - **Description:**
+**Example Project:**  
+- **GameToken (Price Feeds)**  
+  - **Description:**  
     - A dynamic token minting system where the number of tokens minted depends on the current ETH/USD price from Chainlink’s Price Feed.
     - The `GameEngine.sol` contract interacts with Chainlink’s decentralized price oracles, ensuring the token minting process remains transparent and secure.
-  - **Files:**
+  - **Files:**  
     - `GameEngine.sol` – Handles token minting logic based on live price data.
     - `GameToken.sol` – The ERC20 token contract.
-
 
 ---
 
 ### 2️⃣ Automation
 
-**Description:**
+**Description:**  
 Chainlink Automation allows smart contracts to perform scheduled or condition-based tasks automatically, removing the need for manual intervention.
 
-**Planned Projects:**
-- Automated token drip system that releases tokens periodically.
-- Scheduled yield distribution for staking contracts.
+**Example Projects:**  
+- **Time-based Automation**  
+  - **Description:**  
+    - Demonstrates cron-like scheduling using Chainlink Automation.
+    - Contract: `SimpleCounter.sol`
+    - Features: Periodic counter increment using scheduled automation.
+
+- **Custom Logic Automation**  
+  - **Description:**  
+    - Automates token minting based on custom logic.
+    - Contracts: `AutoToken.sol`, `MintingController.sol`
+    - Features: Automated token issuance based on defined on-chain conditions.
+
+- **Log Trigger Automation**  
+  - **Description:**  
+    - Automates token rewards on NFT transfers using on-chain events.
+    - Contracts: `LogNFT.sol`, `LogToken.sol`, `TransferAutomation.sol`
+    - Features: Real-world event-driven automation that rewards NFT activity.
 
 ---
+
 
 ### 3️⃣ CCIP (Cross-Chain Interoperability Protocol)
 
