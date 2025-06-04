@@ -7,7 +7,7 @@ import {TransferAutomation} from "src/Automation/Log Trigger/TransferAutomation.
 
 contract DeployLogTokenSystem is Script {
     function run() public returns (LogToken, TransferAutomation) {
-        if(block.chainid == 31337) {
+        if (block.chainid == 31337) {
             LogToken token = new LogToken(10);
             TransferAutomation automation = new TransferAutomation(address(token));
 
@@ -17,7 +17,7 @@ contract DeployLogTokenSystem is Script {
         } else {
             string memory privatekeyString = vm.envString("PRIVATE_KEY");
             uint256 private_key = vm.parseUint(string(abi.encodePacked("0x", privatekeyString)));
-            
+
             vm.startBroadcast(private_key);
 
             LogToken token = new LogToken(100);

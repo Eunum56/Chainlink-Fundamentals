@@ -11,7 +11,6 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
  * @notice Only TransferAutomation contract can mint new tokens to the user as rewards
  */
 contract LogToken is ERC20, Ownable {
-
     // ERRORS
     error LogToken__InvalidTransferAutomationAddress();
     error LogToken__NotTransferAutomation();
@@ -25,8 +24,8 @@ contract LogToken is ERC20, Ownable {
     address private s_transferAutomation;
 
     // MODIFIERS
-    modifier onlyTransferAutomation {
-        if(msg.sender != s_transferAutomation) {
+    modifier onlyTransferAutomation() {
+        if (msg.sender != s_transferAutomation) {
             revert LogToken__NotTransferAutomation();
         }
         _;
@@ -47,13 +46,11 @@ contract LogToken is ERC20, Ownable {
      * @param newTransferAutomation The address of TransferAutomation contract
      */
     function setTransferAutomation(address newTransferAutomation) external onlyOwner {
-        if(newTransferAutomation == address(0)) {
+        if (newTransferAutomation == address(0)) {
             revert LogToken__InvalidTransferAutomationAddress();
         }
         s_transferAutomation = newTransferAutomation;
-
     }
-
 
     /**
      * @notice Only TransferAutomation can call this function to mint new tokens
@@ -61,10 +58,10 @@ contract LogToken is ERC20, Ownable {
      * @param _amount The amount of tokens to mint
      */
     function mint(address _to, uint256 _amount) external onlyTransferAutomation {
-        if(address(0) == _to) {
+        if (address(0) == _to) {
             revert LogToken__InvalidAddress();
         }
-        if(s_transferAutomation == address(0)) {
+        if (s_transferAutomation == address(0)) {
             revert LogToken__TransferAutomationAddressNotSet();
         }
         _mint(_to, _amount);
@@ -78,13 +75,12 @@ contract LogToken is ERC20, Ownable {
         s_rewardAmount = newRewardAmount;
     }
 
-
     // GETTERS
-    function getRewardAmount() external view returns(uint256) {
+    function getRewardAmount() external view returns (uint256) {
         return s_rewardAmount;
     }
 
-    function getTransferAutomation() external view returns(address) {
+    function getTransferAutomation() external view returns (address) {
         return s_transferAutomation;
     }
 }

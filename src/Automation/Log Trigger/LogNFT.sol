@@ -80,9 +80,8 @@ contract LogNFT is ERC721, Ownable {
         emit TransferTriggered(from, to, tokenId);
     }
 
-
     // GETTERS
-    function getTokenCounter() external view returns(uint256) {
+    function getTokenCounter() external view returns (uint256) {
         return s_tokenCounter;
     }
 }

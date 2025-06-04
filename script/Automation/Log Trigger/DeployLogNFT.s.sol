@@ -6,7 +6,7 @@ import {LogNFT} from "src/Automation/Log Trigger/LogNFT.sol";
 
 contract DeployLogNFT is Script {
     function run() public returns (LogNFT) {
-        if(block.chainid == 31337) {
+        if (block.chainid == 31337) {
             LogNFT logNFT = new LogNFT();
             return logNFT;
         } else {
