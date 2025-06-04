@@ -37,24 +37,24 @@ contract MintingControllerTest is Test {
     }
 
     function testCheckUpKeepNeeded() public {
-        (bool upKeepNeeded,) = controller.checkUpKeep("");
+        (bool upKeepNeeded,) = controller.checkUpkeep("");
         assertEq(false, upKeepNeeded);
 
         vm.warp(block.timestamp + controller.getInterval() + 1);
 
-        (bool upKeepNeeded2,) = controller.checkUpKeep("");
+        (bool upKeepNeeded2,) = controller.checkUpkeep("");
         assertEq(true, upKeepNeeded2);
     }
 
     function testPerformUpKeepReverts() public {
         vm.expectRevert(MintingController.MintingController__UpKeepNotNeeded.selector);
-        controller.performUpKeep("");
+        controller.performUpkeep("");
     }
 
     function testPerfromUpKeepMintsTheTokens() public {
         vm.warp(block.timestamp + controller.getInterval() + 1);
         vm.prank(owner);
-        controller.performUpKeep("");
+        controller.performUpkeep("");
 
         assertEq(deploymentTimeStamp + controller.getInterval() + 1, block.timestamp);
         assertEq(token.balanceOf(owner), 10 * 1e18);
