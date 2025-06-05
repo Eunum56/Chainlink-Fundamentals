@@ -7,6 +7,12 @@ This project demonstrates a simple time-based contract using Chainlink Keepers.
 - **SimpleCounter**
   - Increments a counter on a time-based schedule.
 
+## ✅ Test Coverage
+
+| File | Statements | Branches | Functions | Lines |
+| ---- | ---------- | -------- | --------- | ----- |
+| `src/Automation/Time-based/SimpleCounter.sol` | 100.00% (5/5) | 100.00% (3/3) | 100.00% (0/0) | 100.00% (2/2) |
+
 ## 🔗 Features
 
 - Chainlink Keepers integration for scheduled tasks.

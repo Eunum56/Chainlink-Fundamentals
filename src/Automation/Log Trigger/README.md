@@ -16,6 +16,15 @@ This project rewards NFT activity by minting tokens whenever an NFT transfer occ
   - Chainlink Automation contract that listens to NFT transfers and mints rewards.
   - Deployed at: `0xEe91d0F12e21a6cFBFA919baBc968F1A2e8BAb23`
 
+  ## ✅ Test Coverage
+
+| File | Statements | Branches | Functions | Lines |
+| ---- | ---------- | -------- | --------- | ----- |
+| `src/Automation/Log Trigger/LogNFT.sol` | 100.00% (20/20) | 100.00% (14/14) | 100.00% (2/2) | 100.00% (6/6) |
+| `src/Automation/Log Trigger/LogToken.sol` | 100.00% (21/21) | 100.00% (14/14) | 100.00% (4/4) | 100.00% (7/7) |
+| `src/Automation/Log Trigger/TransferAutomation.sol` | 100.00% (17/17) | 100.00% (14/14) | 100.00% (1/1) | 100.00% (5/5) |
+
+
 ## 🔗 Features
 
 - Chainlink Log Trigger Automation integration.
