@@ -12,23 +12,26 @@ This repository is organized by Chainlink service categories. Each service folde
 
 chainlink-fundamentals/
 ├── script/
-│   ├── Automation/
-│   ├── CCIP/
 │   ├── Data Feeds/
+│   ├── Automation/
+│   ├── VRF/
+|   ├── Data Streams/
 │   ├── Functions/
-│   └── VRF/
+│   └── CCIP/
 ├── src/
-│   ├── Automation/
-│   ├── CCIP/
 │   ├── Data Feeds/
+│   ├── Automation/
+│   ├── VRF/
+|   ├── Data Streams/
 │   ├── Functions/
-│   └── VRF/
+│   └── CCIP/
 ├── test/
-│   ├── Automation/
-│   ├── CCIP/
 │   ├── Data Feeds/
+│   ├── Automation/
+│   ├── VRF/
+|   ├── Data Streams/
 │   ├── Functions/
-│   └── VRF/
+│   └── CCIP/
 ├── .env.example
 ├── .gitignore
 ├── .gitmodules
@@ -92,39 +95,60 @@ Chainlink Automation allows smart contracts to perform scheduled or condition-ba
 
 ---
 
+### 3️⃣ VRF (Verifiable Random Function)
 
-### 3️⃣ CCIP (Cross-Chain Interoperability Protocol)
+**Description:**  
+Chainlink VRF provides secure, tamper-proof randomness on-chain, essential for use cases like gaming, NFT minting, or lotteries.
 
-**Description:**
-CCIP enables secure cross-chain messaging and token transfers, facilitating interoperability between blockchains.
-
-**Planned Projects:**
-- Cross-chain asset bridge.
-- Cross-chain game state synchronization.
+**Example Project:**  
+- **Random Number Generator**  
+  - **Description:**  
+    - A Solidity smart contract that uses Chainlink VRF to generate provably fair random numbers on-chain.
+    - Users can request a random number, which is securely delivered via an asynchronous callback and stored per user.
+  - **Contracts:**  
+    - `RandomNumberGenerator.sol`
+  - **Features:**  
+    - Secure random number requests.
+    - Handles asynchronous callbacks with `fulfillRandomWords()`.
+    - Stores randomness per user.
+    - Emits events for request and fulfillment.
+    - Supports multiple chains via helper configuration.
 
 ---
 
-### 4️⃣ VRF (Verifiable Random Function)
+### 4️⃣ Data Streams
 
-**Description:**
-Chainlink VRF provides provably fair and verifiable randomness, essential for gaming, lotteries, and any application that requires unbiased outcomes.
+**Description:**  
+Chainlink Data Streams provide low-latency, high-frequency data for advanced DeFi use cases, such as perpetuals, derivatives, and high-speed oracles.
 
-**Planned Projects:**
-- On-chain lottery system with fair winner selection.
-- Random NFT minting (generative art).
+**Planned Projects:**  
+- Real-time price updates for perpetuals.
+- High-frequency trading application.
 
 ---
 
 ### 5️⃣ Functions
 
-**Description:**
+**Description:**  
 Chainlink Functions enable fetching off-chain data or performing off-chain computations that are brought on-chain securely.
 
-**Planned Projects:**
+**Planned Projects:**  
 - Weather-based insurance payouts.
 - Dynamic NFT metadata using external APIs.
 
 ---
+
+### 6️⃣ CCIP (Cross-Chain Interoperability Protocol)
+
+**Description:**  
+CCIP enables secure cross-chain messaging and token transfers, facilitating interoperability between blockchains.
+
+**Planned Projects:**  
+- Cross-chain asset bridge.
+- Cross-chain game state synchronization.
+
+---
+
 
 ## 🚀 Getting Started
 
