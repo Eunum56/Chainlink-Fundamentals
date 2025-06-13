@@ -43,7 +43,19 @@ contract TopCryptoDetails is FunctionsClient, ConfirmedOwner {
     string private s_TopCryptoDetails;
     bytes32 private s_lastRequestId;
 
-    string source;
+    string source = "const trendingResponse = await Functions.makeHttpRequest({"
+        "url: `https://api.coingecko.com/api/v3/search/trending`, " "});"
+        "if (trendingResponse.error) throw new Error(`Failed to fetch trending tokens`);"
+        "const topCoin = trendingResponse.data.coins[0].item;" "const coinId = topCoin.id;"
+        "const priceResponse = await Functions.makeHttpRequest({"
+        "url: `https://api.coingecko.com/api/v3/coins/${coinId}`," "});"
+        "if (priceResponse.error) throw new Error(`Failed to fetch token market data`);"
+        "const marketData = priceResponse.data;" "const price = marketData.market_data.current_price.usd;"
+        "const platforms = marketData.platforms || {};" "const platformKeys = Object.keys(platforms);"
+        "let chain = `N/A`;" "let address = `N/A`;" "if (platformKeys.length > 0) {" "chain = platformKeys[0];"
+        "address = platforms[chain];" "}" "const result = {" "name: topCoin.name," "price: price," "chain: chain,"
+        "contract: address," "};"
+        "return Functions.encodeString(`Name: ${topCoin.name} ,Price: ${price} ,Blockchain: ${chain} ,Contract Address: ${address}`);";
 
     // EVENTS
     event TopCryptoRequest(address indexed user, bytes32 indexed requestId, uint256 timestamp);
