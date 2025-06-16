@@ -8,8 +8,8 @@ import {ILogAutomation, Log} from "@chainlink/contracts/src/v0.8/automation/inte
 import {IRewardManager} from "@chainlink/contracts/src/v0.8/llo-feeds/v0.3.0/interfaces/IRewardManager.sol";
 import {IERC20} from "@chainlink/contracts/src/v0.8/vendor/openzeppelin-solidity/v4.8.3/contracts/interfaces/IERC20.sol";
 
-import {IFeeManager} from "./interfaces/IFeeManager.sol";
-import {IVerifierProxy} from "./interfaces/IVerifierProxy.sol";
+import {IFeeManager} from "./Interfaces/IFeeManager.sol";
+import {IVerifierProxy} from "./Interfaces/IVerifierProxy.sol";
 
 /**
  * THIS IS AN EXAMPLE CONTRACT THAT USES UN-AUDITED CODE FOR DEMONSTRATION PURPOSES.
