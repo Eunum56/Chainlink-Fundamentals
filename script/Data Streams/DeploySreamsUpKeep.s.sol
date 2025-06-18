@@ -29,11 +29,21 @@ contract DeployStreamsUpKeep is Script {
 
         StreamsUpkeep streamsUpKeep = new StreamsUpkeep(config.verifier, config.feedId);
 
+        // Transfer some link to perform upkeep to retrive ETH/USD price from Chainlink DataStream
         LinkTokenInterface(config.link).transfer(address(streamsUpKeep), LINK_SEND_AMOUNT);
 
         vm.stopBroadcast();
 
-        upKeep.registerUpKeep(address(streamsUpKeep), address(emitter), config.registry, config.registrar, config.link);
+        // ⚠️ Known issue:
+        // Even with correct `triggerType = 1` and properly encoded `triggerConfig`,
+        // programmatically registering a Log Trigger Upkeep via `registerUpkeep()`
+        // often results in a fallback registration as "Custom Logic".
+        // This may be due to Chainlink requiring manual approval or internal validation failure.
+        //
+        // Temporary Workaround:
+        // Use the Chainlink Automation UI to manually register Log Trigger upkeeps.
+
+        // upKeep.registerUpKeep(address(streamsUpKeep), address(emitter), config.registry, config.registrar, config.link);
 
         return (emitter, streamsUpKeep);
     }
