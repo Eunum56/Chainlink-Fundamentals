@@ -89,7 +89,7 @@ contract SUPHelperConfig is Script {
             activeNetworkConfig = getArbConfig();
         } else if (block.chainid == ARB_SEPOLIA_CHAINID) {
             activeNetworkConfig = getArbSepoliaConfig();
-        } else if(block.chainid == OP_SEPOLIA_CHAINID) {
+        } else if (block.chainid == OP_SEPOLIA_CHAINID) {
             activeNetworkConfig = getOpSepoliaConfig();
         } else {
             revert SUPHelperConfig__InvalidChain();
@@ -140,7 +140,7 @@ contract SUPHelperConfig is Script {
         });
     }
 
-    function getOpSepoliaConfig() internal view returns(NetworkConfig memory) {
+    function getOpSepoliaConfig() internal view returns (NetworkConfig memory) {
         return NetworkConfig({
             verifier: OP_SEPOLIA_VERIFIER,
             feedId: OP_SEPOLIA_FEED_ID,
