@@ -121,9 +121,18 @@ Chainlink VRF provides secure, tamper-proof randomness on-chain, essential for u
 **Description:**  
 Chainlink Data Streams provide low-latency, high-frequency data for advanced DeFi use cases, such as perpetuals, derivatives, and high-speed oracles.
 
-**Planned Projects:**  
-- Real-time price updates for perpetuals.
-- High-frequency trading application.
+**Example Project:**  
+- **Log-Triggered Price Capture**  
+  - **Description:**  
+    - A smart contract system that emits logs to trigger Chainlink Automation, which fetches real-time ETH/USD price from Chainlink Data Streams and stores it on-chain.
+    - Demonstrates how on-chain events can drive high-speed data pipelines using Chainlink's Streams and Automation.
+  - **Contracts:**  
+    - `LogEmitter.sol` – Emits a log to initiate the data flow.  
+    - `StreamsUpkeep.sol` – Handles log verification and price capture via `StreamsLookup`.  
+  - **Features:**  
+    - Uses Log Triggered Automation.
+    - Fetches and stores low-latency price data.
+    - Simulates real-time DeFi use cases.
 
 ---
 
@@ -132,9 +141,19 @@ Chainlink Data Streams provide low-latency, high-frequency data for advanced DeF
 **Description:**  
 Chainlink Functions enable fetching off-chain data or performing off-chain computations that are brought on-chain securely.
 
-**Planned Projects:**  
-- Weather-based insurance payouts.
-- Dynamic NFT metadata using external APIs.
+**Example Project:**  
+- **TopCryptoDetails (CoinGecko Integration)**  
+  - **Description:**  
+    - A smart contract that uses Chainlink Functions to fetch live data from CoinGecko about the top N cryptocurrencies by market cap.
+    - Entirely built using Foundry — no manual Chainlink UI interactions required.
+  - **Contracts:**  
+    - `TopCryptoDetails.sol` – Sends requests and stores off-chain API responses.  
+  - **Scripts:**  
+    - Fully automated setup scripts for creating subscriptions, funding them, adding consumers, and making requests — all via Foundry.
+  - **Features:**  
+    - Calls external CoinGecko API via Chainlink Functions.
+    - Automatically manages subscriptions using Foundry.
+    - Stores and exposes real-time crypto data on-chain.
 
 ---
 
