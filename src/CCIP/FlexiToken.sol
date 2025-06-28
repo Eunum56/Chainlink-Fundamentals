@@ -34,6 +34,7 @@ import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
  * @notice Each user will have their own interest rate that is global interest rate the time of depositing
  */
 contract FlexiToken is ERC20, Ownable, AccessControl {
+
     // ERRORS
     error FlexiToken__InterestRateCanOnlyDecrease(uint256 newInterestRate, uint256 oldInterestRate);
 
@@ -59,7 +60,7 @@ contract FlexiToken is ERC20, Ownable, AccessControl {
     }
 
     function setInterestRate(uint256 _newInterestRate) external onlyOwner {
-        if (_newInterestRate < s_interestRate) {
+        if (_newInterestRate > s_interestRate) {
             revert FlexiToken__InterestRateCanOnlyDecrease(s_interestRate, _newInterestRate);
         }
 
@@ -72,13 +73,13 @@ contract FlexiToken is ERC20, Ownable, AccessControl {
         return super.balanceOf(_user);
     }
 
-    function mint(address _to, uint256 _amount) external {
+    function mint(address _to, uint256 _amount) external onlyRole(MINT_AND_BURN_ROLE) {
         _mintAccruedInterest(_to);
         s_userInterestRate[_to] = s_interestRate;
         _mint(_to, _amount);
     }
 
-    function burn(address _from, uint256 _amount) external {
+    function burn(address _from, uint256 _amount) external onlyRole(MINT_AND_BURN_ROLE) {
         if (_amount == type(uint256).max) {
             _amount = balanceOf(_from);
         }
@@ -166,5 +167,9 @@ contract FlexiToken is ERC20, Ownable, AccessControl {
 
     function getUserLastUpdatedTimestamp(address _user) external view returns (uint256) {
         return s_userLastUpdatedTimestamp[_user];
+    }
+
+    function getPrincipleBalance(address user) external view returns (uint256) {
+        return super.balanceOf(user);
     }
 }
