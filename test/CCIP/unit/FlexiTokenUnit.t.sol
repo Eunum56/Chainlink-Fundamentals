@@ -9,7 +9,6 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {IAccessControl} from "@openzeppelin/contracts/access/IAccessControl.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-
 contract RejectingReceiver {
     fallback() external payable {
         revert();
@@ -41,7 +40,7 @@ contract FlexiTokenUnitTest is Test {
 
         token.grantMintAndBurnRole(address(vault));
 
-        (bool success, ) = address(vault).call{value: INITIAL_REWARDS}("");
+        (bool success,) = address(vault).call{value: INITIAL_REWARDS}("");
         require(success);
 
         vm.stopPrank();
@@ -150,6 +149,4 @@ contract FlexiTokenUnitTest is Test {
         vault.deposit{value: 1e2}();
         assertEq(token.getUserLastUpdatedTimestamp(user), block.timestamp);
     }
-
-
 }

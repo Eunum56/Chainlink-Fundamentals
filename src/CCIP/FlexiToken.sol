@@ -34,7 +34,6 @@ import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
  * @notice Each user will have their own interest rate that is global interest rate the time of depositing
  */
 contract FlexiToken is ERC20, Ownable, AccessControl {
-
     // ERRORS
     error FlexiToken__InterestRateCanOnlyDecrease(uint256 newInterestRate, uint256 oldInterestRate);
 

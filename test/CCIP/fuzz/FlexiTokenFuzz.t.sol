@@ -27,13 +27,13 @@ contract FlexiTokenFuzzTest is Test {
         vault = new Vault(token);
 
         token.grantMintAndBurnRole(address(vault));
-        (bool success, ) = address(vault).call{value: INITIAL_REWARDS}("");
+        (bool success,) = address(vault).call{value: INITIAL_REWARDS}("");
         require(success);
 
         vm.stopPrank();
     }
 
-// DEPOSIT TESTS
+    // DEPOSIT TESTS
     function testDepositLinear(uint256 amount) public {
         amount = bound(amount, 1e5, type(uint96).max);
         // 1. deposit

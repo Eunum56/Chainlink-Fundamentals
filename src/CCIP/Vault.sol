@@ -53,7 +53,7 @@ contract Vault {
     }
 
     function redeem(uint256 _amount) external {
-        if(_amount <= 0) {
+        if (_amount <= 0) {
             revert Vault__AmountShouldBeMoreThanZero();
         }
 
