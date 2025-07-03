@@ -162,9 +162,19 @@ Chainlink Functions enable fetching off-chain data or performing off-chain compu
 **Description:**  
 CCIP enables secure cross-chain messaging and token transfers, facilitating interoperability between blockchains.
 
-**Planned Projects:**  
-- Cross-chain asset bridge.
-- Cross-chain game state synchronization.
+**Example Project:**  
+- **FlexiToken Cross-Chain Bridge**
+  - **Description:**  
+    Demonstrates a complete cross-chain token bridging system using **Chainlink CCIP**.
+  - **Components:**
+    - `FlexiToken` — A custom mintable/burnable ERC20 token.
+    - `FlexiTokenPool` — A CCIP-compatible token pool that handles secure bridging logic.
+    - `Vault` — Auxiliary contract for managing minting and burning during cross-chain operations.
+  - **Features:**  
+    - Allows users to bridge tokens across chains securely.
+    - Implements mint/burn flows to maintain supply integrity.
+    - Includes full deployment, configuration, and CCIP setup scripts.
+
 
 ---
 
